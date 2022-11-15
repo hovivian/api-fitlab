@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int        @id @default(autoincrement())
+  email            String     @unique
+  username         String     @unique
+  passwordHash     String
+  targetWeight     Int
+  height           Int
+  weight           Weight[]
+  workouts         Workout[]
+}
+
+model Weight {
+  id                  Int              @id @default(autoincrement())
+  createdAt           DateTime         @default(now())
+  weight              Int
+  user                User             @relation(fields: [userId], references: [id])
+  userId              Int
+}
+
+model Workout {
+  id                      Int             @id @default(autoincrement())
+  dayOfWeek               DayOfWeek
+  exercise                Exercise?        @relation(fields: [exerciseId], references: [id])
+  exerciseId              Int
+  restDay                 Boolean
+  rep                     Int
+  set                     Int
+  user                    User            @relation(fields: [userId], references: [id])
+  userId                  Int
+}
+
+model Exercise {
+  id               Int        @id @default(autoincrement())
+  identifierId     String          @unique
+  title            String
+  workouts         Workout[]
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
