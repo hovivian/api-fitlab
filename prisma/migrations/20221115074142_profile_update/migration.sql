@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "targetWeight" SET DEFAULT 0,
+ALTER COLUMN "height" SET DEFAULT 0;

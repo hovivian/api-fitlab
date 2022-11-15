@@ -19,7 +19,7 @@ router.post('/api/my/weight', (await import('./controllers/api/my/weight/create.
 router.get('/api/my/workout', (await import('./controllers/api/my/workout/index.js')).default)
 router.post('/api/my/workout', (await import('./controllers/api/my/workout/create.js')).default)
 router.put('/api/my/workout/:id', (await import('./controllers/api/my/workout/update.js')).default)
-router.delete('/api/my/workout/:id', (await import('./controllers/api/my/workout/delete.js')).default)
+router.delete('/api/my/workout/:id', (await import('./controllers/api/my/workout/destroy.js')).default)
 
 router.use((req, res) => res.status(404).json({ message: 'Page Not Found' }))
 

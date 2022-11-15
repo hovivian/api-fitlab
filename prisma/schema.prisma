@@ -15,8 +15,8 @@ model User {
   email            String     @unique
   username         String     @unique
   passwordHash     String
-  targetWeight     Int
-  height           Int
+  targetWeight     Int        @default(0)
+  height           Int        @default(0)
   weight           Weight[]
   workouts         Workout[]
 }
