@@ -6,8 +6,7 @@ import checkOwnership from './_check-ownership.js'
 
 const updateSchema = yup.object({
   exercise: yup.object({
-    identifierId: yup.string().required(),
-    title: yup.string().required()
+    name: yup.string().required()
   }),
   dayOfWeek: yup.mixed<dayOfWeek>().oneOf(Object.values(dayOfWeek)).required(),
   rep: yup.number(),
