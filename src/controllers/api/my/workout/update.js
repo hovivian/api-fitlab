@@ -8,7 +8,7 @@ const updateSchema = yup.object({
   exercise: yup.object({
     name: yup.string().required()
   }),
-  dayOfWeek: yup.mixed<dayOfWeek>().oneOf(Object.values(dayOfWeek)).required(),
+  dayOfWeek: yup.string().required(),
   rep: yup.number(),
   set: yup.number(),
   restDay: yup.boolean().required()

@@ -8,7 +8,7 @@ const createSchema = yup.object({
     identifierId: yup.string().required(),
     title: yup.string().required()
   }),
-  dayOfWeek: yup.mixed<dayOfWeek>().oneOf(Object.values(dayOfWeek)).required(),
+  dayOfWeek: yup.string().required(),
   rep: yup.number(),
   set: yup.number(),
   restDay: yup.boolean().required()
