@@ -9,7 +9,7 @@ router.delete('/api/auth/logout', (await import('./controllers/api/auth/logout.j
 
 // MY | PROFILE
 router.get('/api/my/profile', (await import('./controllers/api/my/profile/show.js')).default)
-router.put('/api/my/profile/:id', (await import('./controllers/api/my/profile/update.js')).default)
+router.put('/api/my/profile', (await import('./controllers/api/my/profile/update.js')).default)
 
 // MY | WEIGHT
 router.get('/api/my/weight', (await import('./controllers/api/my/weight/index.js')).default)
