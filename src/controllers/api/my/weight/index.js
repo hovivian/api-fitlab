@@ -7,7 +7,6 @@ const controllersApiMyWeightIndex = async (req, res) => {
     const foundWeights = await prisma.weight.findMany({
       where: { userId: id },
       include: {
-        weight: true,
         user: true
       }
     })
