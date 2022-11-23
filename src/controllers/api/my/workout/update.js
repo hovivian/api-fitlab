@@ -5,13 +5,13 @@ import handleErrors from '../../../_helpers/handle-errors.js'
 import checkOwnership from './_check-ownership.js'
 
 const updateSchema = yup.object({
-  exercise: yup.object({
+  dayOfWeek: yup.string().required(),
+  restDay: yup.boolean().required(),
+  Exercise: yup.array().of(yup.object({
     name: yup.string().required(),
     rep: yup.number().required(),
     set: yup.number().required()
-  }),
-  dayOfWeek: yup.string().required(),
-  restDay: yup.boolean().required()
+  }))
 })
 
 const controllersApiMyWorkoutUpdate = async (req, res) => {

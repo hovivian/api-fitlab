@@ -4,13 +4,13 @@ import prisma from '../../../_helpers/prisma.js'
 import handleErrors from '../../../_helpers/handle-errors.js'
 
 const createSchema = yup.object({
-  exercise: yup.object({
+  dayOfWeek: yup.string().required(),
+  restDay: yup.boolean().required(),
+  Exercise: yup.array().of(yup.object({
     name: yup.string().required(),
     rep: yup.number().required(),
     set: yup.number().required()
-  }),
-  dayOfWeek: yup.string().required(),
-  restDay: yup.boolean().required()
+  }))
 })
 
 const controllersApiMyWorkoutCreate = async (req, res) => {
