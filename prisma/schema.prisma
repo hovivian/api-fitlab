@@ -35,16 +35,16 @@ model Workout {
   exercise                Exercise?        @relation(fields: [exerciseId], references: [id])
   exerciseId              Int
   restDay                 Boolean
-  rep                     Int
-  set                     Int
   user                    User            @relation(fields: [userId], references: [id])
   userId                  Int
 }
 
 model Exercise {
   id               Int        @id @default(autoincrement())
-  name            String
+  name             String
   workouts         Workout[]
+  rep              Int
+  set              Int
 }
 
 enum DayOfWeek {

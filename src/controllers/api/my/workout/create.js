@@ -4,10 +4,12 @@ import prisma from '../../../_helpers/prisma.js'
 import handleErrors from '../../../_helpers/handle-errors.js'
 
 const createSchema = yup.object({
-  exercise: yup.string().required(),
+  exercise: yup.object({
+    name: yup.string().required(),
+    rep: yup.number().required(),
+    set: yup.number().required()
+  }),
   dayOfWeek: yup.string().required(),
-  rep: yup.number(),
-  set: yup.number(),
   restDay: yup.boolean().required()
 })
 
