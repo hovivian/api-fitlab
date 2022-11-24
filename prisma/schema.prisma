@@ -32,8 +32,7 @@ model Weight {
 model Workout {
   id                      Int             @id @default(autoincrement())
   dayOfWeek               DayOfWeek
-  exercise                Exercise?        @relation(fields: [exerciseId], references: [id])
-  exerciseId              Int
+  exercise                Exercise[]
   restDay                 Boolean
   user                    User            @relation(fields: [userId], references: [id])
   userId                  Int
