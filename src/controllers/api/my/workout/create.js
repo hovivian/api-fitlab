@@ -31,7 +31,8 @@ const controllersApiMyWorkoutCreate = async (req, res) => {
         }))
       },
       include: {
-        exercise: true
+        exercise: true,
+        user: true
       }
     })
     return res.status(201).json(newWorkout)

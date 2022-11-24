@@ -7,7 +7,7 @@ const controllersApiMyWorkoutIndex = async (req, res) => {
     const foundWorkout = await prisma.workout.findMany({
       where: { userId: id },
       include: {
-        user: true
+        exercise: true
       }
     })
     return res.status(200).json(foundWorkout)
