@@ -25,14 +25,12 @@ const controllersApiMyWorkoutCreate = async (req, res) => {
       data: {
         ...verifiedData,
         userId,
-        exercise: verifiedData.restDay ? {} : verifiedData.exercise.map((exercise) => ({
-          where: { id: exercise.id || 0 },
-          create: exercise
-        }))
+        exercise: verifiedData.restDay ? {} : {
+          create: verifiedData.exercise
+        }
       },
       include: {
-        exercise: true,
-        user: true
+        exercise: true
       }
     })
     return res.status(201).json(newWorkout)
