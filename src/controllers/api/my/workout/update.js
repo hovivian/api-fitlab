@@ -6,12 +6,16 @@ import checkOwnership from './_check-ownership.js'
 
 const updateSchema = yup.object({
   dayOfWeek: yup.string().required(),
-  restDay: yup.boolean().required(),
-  Exercise: yup.array().of(yup.object({
-    name: yup.string().required(),
-    rep: yup.number().required(),
-    set: yup.number().required()
-  }))
+  exercise: yup.array().when('restDay', {
+    is: true,
+    then: (schema) => schema.max(0),
+    otherwise: (schema) => schema.of(yup.object({
+      name: yup.string().required().label('exercise'),
+      rep: yup.number().required().label('rep'),
+      set: yup.number().required().label('set')
+    }))
+  }),
+  restDay: yup.boolean().transform((value) => !!value)
 })
 
 const controllersApiMyWorkoutUpdate = async (req, res) => {
