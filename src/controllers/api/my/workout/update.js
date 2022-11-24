@@ -22,8 +22,8 @@ const controllersApiMyWorkoutUpdate = async (req, res) => {
   try {
     const { params: { id }, body } = req
     const verifiedData = await updateSchema.validate(body, { abortEarly: false, stripUnknown: true })
-    const updateWorkout = await prisma.workout.update({ where: { id: Number(id) }, data: verifiedData })
-    return res.status(201).json(updateWorkout)
+    const updatedWorkout = await prisma.workout.update({ where: { id: Number(id) }, data: verifiedData })
+    return res.status(201).json(updatedWorkout)
   } catch (err) {
     return handleErrors(res, err)
   }
